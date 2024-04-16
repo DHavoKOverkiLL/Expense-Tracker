@@ -8,11 +8,11 @@ namespace Expense_Tracker.Models
         [Key]
         public int TransactionId { get; set; }
 
-        [Range(1, int .MaxValue,ErrorMessage ="Please select a category!")]
+        [Range(1, int.MaxValue, ErrorMessage = "Please select a category.")]
         public int CategoryId { get; set; }
         public Category? Category { get; set; }
 
-        [Range(1, int.MaxValue, ErrorMessage = "Amount should be greater than 0!")]
+        [Range(1, int.MaxValue, ErrorMessage = "Amount should be greater than 0.")]
         public int Amount { get; set; }
 
         [Column(TypeName = "nvarchar(75)")]
@@ -21,11 +21,11 @@ namespace Expense_Tracker.Models
         public DateTime Date { get; set; } = DateTime.Now;
 
         [NotMapped]
-        public string? CategoryTtileWithIcon
+        public string? CategoryTitleWithIcon
         {
             get
             {
-                return Category == null ? "": Category.Icon+ "" + Category.Title;
+                return Category == null ? "" : Category.Icon + " " + Category.Title;
             }
         }
 
@@ -34,8 +34,9 @@ namespace Expense_Tracker.Models
         {
             get
             {
-                return ((Category == null || Category.Type == "Expense")? "- " : "+ " + Category.Title) + Amount.ToString("C0");
+                return ((Category == null || Category.Type == "Expense") ? "- " : "+ ") + Amount.ToString("C0");
             }
         }
+
     }
 }
